@@ -1,0 +1,38 @@
+version: "3.8"
+
+x-common-env: &common-env
+  CYCLONEDDS_URI: >-
+    <CycloneDDS><Domain><Discovery><MaxAutoParticipantIndex>1000</MaxAutoParticipantIndex></Discovery><General><Interfaces><NetworkInterface name="lo" multicast="true"/></Interfaces></General></Domain></CycloneDDS>
+  RMW_IMPLEMENTATION: rmw_cyclonedds_cpp
+  ROS_DOMAIN_ID: "0"
+
+services:
+  turtlebot-gazebo:
+    image: turtlebot4:jazzy
+    container_name: ros2-turtlebot4-jazzy
+    tty: True
+    # Build locally and tag with the image name above (optional—remove if you pull the image)
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+      args:
+        ROS_DISTRO: jazzy
+
+    network_mode: host
+    privileged: true  # needed for Gazebo GUI / hardware access
+
+    environment:
+      <<: *common-env
+      DISPLAY: ${DISPLAY}
+      ROS_DISTRO: jazzy
+      NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_DRIVER_CAPABILITIES: all
+
+    volumes:
+      # X11 socket for GUI (read-only is usually fine)
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+
+    # If your Docker/Compose supports it, uncomment to grant GPU access:
+    # gpus: all
+
+    command: ["ros2", "launch", "turtlebot4_gz_bringup", "turtlebot4_gz.launch.py"]
