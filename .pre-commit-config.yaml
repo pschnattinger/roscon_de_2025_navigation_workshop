@@ -1,0 +1,73 @@
+repos:
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v2.1.1
+    hooks:
+      - id: conventional-pre-commit
+        stages: [commit-msg]
+        args: [] # optional: list of Conventional Commits types to allow
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.3.0
+    hooks:
+      - id: check-added-large-files # Prevent giant files from being committed
+      - id: check-ast # Simply check whether files parse as valid python
+      - id: check-builtin-literals # Require literal syntax when initializing empty or zero Python builtin types
+      - id: check-case-conflict # Check for files with names that would conflict on a case-insensitive filesystem like MacOS HFS+ or Windows FAT
+      - id: check-docstring-first # Checks for a common error of placing code before the docstring
+      - id: check-executables-have-shebangs # Checks that non-binary executables have a proper shebang
+      - id: check-json # Attempts to load all json files to verify syntax
+      - id: check-merge-conflict # Check for files that contain merge conflict strings
+      - id: check-shebang-scripts-are-executable # Checks that scripts with shebangs are executable
+      - id: check-symlinks # Checks for symlinks which do not point to anything
+      - id: check-toml # Attempts to load all TOML files to verify syntax
+      - id: check-vcs-permalinks # Ensures that links to vcs websites are permalinks
+      - id: check-xml # Attempts to load all xml files to verify syntax
+      - id: check-yaml # Attempts to load all yaml files to verify syntax
+        args: ["--unsafe"]
+      - id: debug-statements # Check for debugger imports and py37+ breakpoint() calls in python source
+      - id: destroyed-symlinks # Detects symlinks which are changed to regular files with a content of a path which that symlink was pointing to. This usually happens on Windows when a user clones a repository that has symlinks but they do not have the permission to create symlinks.
+      # - id: detect-aws-credentials # Checks for the existence of AWS secrets that you have set up with the AWS CLI.
+      - id: detect-private-key # Checks for the existence of private keys
+      # - id: double-quote-string-fixer # This hook replaces double quoted strings with single quoted strings
+      - id: end-of-file-fixer # Makes sure files end in a newline and only a newline
+      # - id: file-contents-sorter # Sort the lines in specified files (defaults to alphabetical). You must provide the target files as input. Note that this hook WILL remove blank lines and does NOT respect any comments.
+      # - id: fix-byte-order-marker # removes UTF-8 byte order marker
+      # - id: fix-encoding-pragma # Add # -*- coding: utf-8 -*- to the top of python files.
+      # - id: forbid-new-submodules # Prevent addition of new git submodules.
+      # - id: forbid-submodules # forbids any submodules in the repository.
+      - id: mixed-line-ending # Replaces or checks mixed line ending.
+        args: [--fix=lf]
+      - id: name-tests-test # verifies that test files are named correctly.
+      # - id: no-commit-to-branch # Protect specific branches from direct checkins.
+      #   args: [--branch, master, --branch, main]
+      # - id: pretty-format-json # Checks that all your JSON files are pretty. "Pretty" here means that keys are sorted and indented.
+      #   args: [--autofix]
+      - id: requirements-txt-fixer # Sorts entries in requirements.txt and removes incorrect entry for pkg-resources==0.0.0
+      # - id: sort-simple-yaml # Sorts simple YAML files which consist only of top-level keys, preserving comments and blocks
+      - id: trailing-whitespace # Trims trailing whitespace.
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.2.0
+    hooks:
+      - id: pyupgrade
+  - repo: https://github.com/psf/black
+    rev: 22.10.0
+    hooks:
+      - id: black
+  - repo: https://github.com/pre-commit/mirrors-clang-format
+    rev: v14.0.6
+    hooks:
+      - id: clang-format
+        args: [--style=file]
+        exclude: '^envs/arena_graph_synaos/generated/.*\.json$'
+  - repo: https://github.com/cpplint/cpplint
+    rev: 1.6.1
+    hooks:
+    - id: cpplint
+      name: cpplint
+      description: Static code analysis of C/C++ files
+      language: python
+      args:
+        - '--linelength=120'
+        - '--quiet'
+        - '--filter=-runtime/references,-readability/todo,-build/c++11,-whitespace/braces,-whitespace/newline,-whitespace/indent,-build/include_order,-whitespace/line_length'
+      files: \.(h\+\+|h|hh|hxx|hpp|cuh|c|cc|cpp|cu|c\+\+|cxx|tpp|txx)$
+      entry: cpplint
