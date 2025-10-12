@@ -25,9 +25,20 @@ services:
       <<: *common-env
       DISPLAY: ${DISPLAY}
       ROS_DISTRO: jazzy
-      NVIDIA_VISIBLE_DEVICES: all
-      NVIDIA_DRIVER_CAPABILITIES: all
+      QT_X11_NO_MITSHM: "1"
+      QT_QPA_PLATFORM: xcb
 
+      # Gazebo rendering (GPU lidar needs this)
+      GZ_RENDER_ENGINE: ogre2
+
+      # AMD Mesa driver (important on your P14s Cezanne)
+      MESA_LOADER_DRIVER_OVERRIDE: radeonsi
+      LIBGL_DRI3_DISABLE: "1"
+      MESA_GL_VERSION_OVERRIDE: "4.5"
+      MESA_GLSL_VERSION_OVERRIDE: "450"
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
+      - /dev/dri/card0:/dev/dri/card0
     volumes:
       # X11 socket for GUI (read-only is usually fine)
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
@@ -35,4 +46,9 @@ services:
     # If your Docker/Compose supports it, uncomment to grant GPU access:
     # gpus: all
 
-    command: ["ros2", "launch", "turtlebot4_gz_bringup", "turtlebot4_gz.launch.py"]
+    command: "bin/bash -c 'ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py rviz:=true world:=maze visualize_rays:=true use_sim_time:=true'"
+  foxglove-bridge:
+    image: foxglove-bridge
+    environment:
+      <<: *common-env
+    network_mode: host

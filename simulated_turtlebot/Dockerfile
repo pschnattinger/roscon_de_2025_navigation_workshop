@@ -33,8 +33,11 @@ RUN apt-get update && \
       gz-harmonic \
       # Optional dev/quality-of-life tools (remove to slim)
       python3-colcon-common-extensions \
-      less && \
-    rm -rf /var/lib/apt/lists/*
+      less
+# Add this to your Dockerfile
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgz-rendering8-ogre2 \
+ && rm -rf /var/lib/apt/lists/*
 
 # Defaults (can be overridden at build or runtime)
 ARG ROS_DOMAIN_ID=0
