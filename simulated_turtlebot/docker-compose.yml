@@ -52,3 +52,11 @@ services:
     environment:
       <<: *common-env
     network_mode: host
+  #TODO: add docker profile for this
+  mapping:
+    # change the image name
+    image: foxglove-bridge
+    environment:
+      <<: *common-env
+    network_mode: host
+    command: /bin/bash -c "ros2 launch slam_toolbox online_async_launch.py use_sim_time:=true"
