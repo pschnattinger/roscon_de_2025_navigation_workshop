@@ -7,9 +7,10 @@ x-common-env: &common-env
   ROS_DOMAIN_ID: "0"
 
 services:
-  turtlebot-gazebo:
+
+  turtlebot-navigation:
     image: turtlebot4:jazzy
-    container_name: ros2-turtlebot4-jazzy
+    container_name: ros2-turtlebot4-navigation-jazzy
     tty: True
     # Build locally and tag with the image name above (optional—remove if you pull the image)
     build:
@@ -25,38 +26,97 @@ services:
       <<: *common-env
       DISPLAY: ${DISPLAY}
       ROS_DISTRO: jazzy
-      QT_X11_NO_MITSHM: "1"
-      QT_QPA_PLATFORM: xcb
-
-      # Gazebo rendering (GPU lidar needs this)
-      GZ_RENDER_ENGINE: ogre2
-
-      # AMD Mesa driver (important on your P14s Cezanne)
-      MESA_LOADER_DRIVER_OVERRIDE: radeonsi
-      LIBGL_DRI3_DISABLE: "1"
-      MESA_GL_VERSION_OVERRIDE: "4.5"
-      MESA_GLSL_VERSION_OVERRIDE: "450"
     devices:
       - /dev/dri/renderD128:/dev/dri/renderD128
       - /dev/dri/card0:/dev/dri/card0
+    ipc: host
     volumes:
       # X11 socket for GUI (read-only is usually fine)
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
+      #- ./rplidar.urdf.xacro:/opt/ros/jazzy/share/turtlebot4_description/urdf/sensors/rplidar.urdf.xacro
 
     # If your Docker/Compose supports it, uncomment to grant GPU access:
     # gpus: all
 
-    command: "bin/bash -c 'ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py rviz:=true world:=maze visualize_rays:=true use_sim_time:=true'"
+    command: bin/bash -c 'ros2 launch turtlebot4_navigation nav2.launch.py map:=/opt/ros/jazzy/share/turtlebot4_navigation/maps/maze.yaml use_sim_time:=true'
+  turtlebot-localization:
+    image: turtlebot4:jazzy
+    container_name: ros2-turtlebot4-localization-jazzy
+    tty: True
+    # Build locally and tag with the image name above (optional—remove if you pull the image)
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+      args:
+        ROS_DISTRO: jazzy
+
+    network_mode: host
+    privileged: true  # needed for Gazebo GUI / hardware access
+
+    environment:
+      <<: *common-env
+      DISPLAY: ${DISPLAY}
+      ROS_DISTRO: jazzy
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
+      - /dev/dri/card0:/dev/dri/card0
+    ipc: host
+    volumes:
+      # X11 socket for GUI (read-only is usually fine)
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+      #- ./rplidar.urdf.xacro:/opt/ros/jazzy/share/turtlebot4_description/urdf/sensors/rplidar.urdf.xacro
+
+    # If your Docker/Compose supports it, uncomment to grant GPU access:
+    # gpus: all
+
+    command: bin/bash -c 'ros2 launch turtlebot4_navigation localization.launch.py map:=/opt/ros/jazzy/share/turtlebot4_navigation/maps/maze.yaml use_sim_time:=true'
+  turtlebot-gazebo:
+    image: turtlebot4:jazzy
+    container_name: ros2-turtlebot4-gazebo-jazzy
+    tty: True
+    # Build locally and tag with the image name above (optional—remove if you pull the image)
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+      args:
+        ROS_DISTRO: jazzy
+
+    network_mode: host
+    privileged: true  # needed for Gazebo GUI / hardware access
+
+    environment:
+      <<: *common-env
+      DISPLAY: ${DISPLAY}
+      ROS_DISTRO: jazzy
+      QT_X11_NO_MITSHM: "0"
+      QT_QPA_PLATFORM: xcb
+
+      # Gazebo rendering (GPU lidar needs this)
+      GZ_RENDER_ENGINE: ogre2
+      GZ_GUI_CONFIG: ""
+      vblank_mode: "0"
+      # AMD Mesa driver (important on your P14s Cezanne)
+      MESA_LOADER_DRIVER_OVERRIDE: radeonsi
+      LIBGL_DRI3_DISABLE: "1"
+      #MESA_GL_VERSION_OVERRIDE: "4.5"
+      #MESA_GLSL_VERSION_OVERRIDE: "450"
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
+      - /dev/dri/card0:/dev/dri/card0
+    ipc: host
+    volumes:
+      # X11 socket for GUI (read-only is usually fine)
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+      - /dev/shm:/dev/shm
+      - ./maze.sdf:/opt/ros/jazzy/share/turtlebot4_gz_bringup/worlds/maze.sdf
+      #- ./rplidar.urdf.xacro:/opt/ros/jazzy/share/turtlebot4_description/urdf/sensors/rplidar.urdf.xacro
+
+    # If your Docker/Compose supports it, uncomment to grant GPU access:
+    # gpus: all
+
+    command: bin/bash -c 'ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py localization:=false map:=/opt/ros/jazzy/share/turtlebot4_navigation/maps/maze.yaml nav2:=false rviz:=true world:=maze visualize_rays:=false use_sim_time:=true gz_args:="-s -r"'
   foxglove-bridge:
     image: foxglove-bridge
     environment:
       <<: *common-env
     network_mode: host
-  #TODO: add docker profile for this
-  mapping:
-    # change the image name
-    image: foxglove-bridge
-    environment:
-      <<: *common-env
-    network_mode: host
-    command: /bin/bash -c "ros2 launch slam_toolbox online_async_launch.py use_sim_time:=true"
