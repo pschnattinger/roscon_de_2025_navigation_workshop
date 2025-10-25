@@ -20,7 +20,7 @@ templates_path = ["_templates"]
 exclude_patterns = ["_build"]
 
 # -- HTML theme --------------------------------------------------------------
-html_theme = "furo"
+html_theme = "sphinx_rtd_theme"
 html_static_path = ["_static"]
 
 # Copybutton: ignore prompts in code blocks
