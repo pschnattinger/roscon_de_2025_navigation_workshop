@@ -1,0 +1,36 @@
+name: Pages PR Build
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout PR code
+        uses: actions/checkout@v4
+        with:
+          # Ensures we build the PR HEAD, not the merge commit
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+
+      # If you have a generator (mkdocs, docusaurus, vitepress...), put the build here
+      # - name: Build site
+      #   run: |
+      #     npm ci
+      #     npm run build
+      #
+      # And change "path" below to the build output directory
+
+      - name: Upload static site as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pages-pr-site
+          path: main
+          retention-days: 7
