@@ -9,3 +9,5 @@ Welcome to the official documentation for the **ROSConDE 2025 Navigation Worksho
    :maxdepth: 2
    :caption: Contents
    :hidden:
+
+   lichtblick/lichtblick
