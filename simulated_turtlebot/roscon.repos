@@ -1,0 +1,13 @@
+repositories:
+  turtlebot4_simulator:
+    type: git
+    url: https://github.com/turtlebot/turtlebot4_simulator.git
+    version: jazzy
+  turtlebot4:
+    type: git
+    url: https://github.com/turtlebot/turtlebot4.git
+    version: jazzy
+  create3:
+    type: git
+    url: https://github.com/iRobotEducation/create3_sim.git
+    version: jazzy

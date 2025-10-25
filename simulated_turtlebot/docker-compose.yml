@@ -8,16 +8,37 @@ x-common-env: &common-env
 
 services:
 
+  turtlebot-rviz:
+    image: turtlebot4_navigation:kilted
+    container_name: ros2-turtlebot4-rviz-kilted
+    tty: True
+    network_mode: host
+    environment:
+      <<: *common-env
+      DISPLAY: ${DISPLAY}
+      ROS_DISTRO: kilted
+      QT_X11_NO_MITSHM: "0"
+      QT_QPA_PLATFORM: xcb
+      MESA_LOADER_DRIVER_OVERRIDE: radeonsi
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
+    ipc: host
+    volumes:
+      # X11 socket for GUI (read-only is usually fine)
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+
+    #command: /bin/bash -c 'ros2 run rviz2 rviz2 -d $(ros2 pkg prefix nav2_bringup)/share/nav2_bringup/rviz/nav2_default_view.rviz'
+    command: /bin/bash -c 'ros2 launch nav2_rviz_plugins route_tool.launch.py yaml_filename:=/opt/roscon/share/turtlebot4_navigation/maps/maze.yaml'
   turtlebot-navigation:
-    image: turtlebot4:jazzy
-    container_name: ros2-turtlebot4-navigation-jazzy
+    image: turtlebot4_navigation:kilted
+    container_name: ros2-turtlebot4-navigation-kilted
     tty: True
     # Build locally and tag with the image name above (optional—remove if you pull the image)
     build:
-      context: ./
-      dockerfile: ./Dockerfile
+      context: ../turtlebot_navigation
+      dockerfile: ../turtlebot_navigation/Dockerfile
       args:
-        ROS_DISTRO: jazzy
+        ROS_DISTRO: kilted
 
     network_mode: host
     privileged: true  # needed for Gazebo GUI / hardware access
@@ -25,7 +46,7 @@ services:
     environment:
       <<: *common-env
       DISPLAY: ${DISPLAY}
-      ROS_DISTRO: jazzy
+      ROS_DISTRO: kilted
     devices:
       - /dev/dri/renderD128:/dev/dri/renderD128
       - /dev/dri/card0:/dev/dri/card0
@@ -33,22 +54,22 @@ services:
     volumes:
       # X11 socket for GUI (read-only is usually fine)
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
-      #- ./rplidar.urdf.xacro:/opt/ros/jazzy/share/turtlebot4_description/urdf/sensors/rplidar.urdf.xacro
+      - ../configs/nav2.yaml:/opt/roscon/share/turtlebot4_navigation/config/nav2.yaml
 
     # If your Docker/Compose supports it, uncomment to grant GPU access:
     # gpus: all
 
-    command: bin/bash -c 'ros2 launch turtlebot4_navigation nav2.launch.py map:=/opt/ros/jazzy/share/turtlebot4_navigation/maps/maze.yaml use_sim_time:=true'
+    command: /bin/bash -c 'ros2 launch turtlebot4_navigation nav2.launch.py map:=/opt/roscon/share/turtlebot4_navigation/maps/maze.yaml use_sim_time:=true'
   turtlebot-localization:
-    image: turtlebot4:jazzy
-    container_name: ros2-turtlebot4-localization-jazzy
+    image: turtlebot4_navigation:kilted
+    container_name: ros2-turtlebot4-localization-kilted
     tty: True
     # Build locally and tag with the image name above (optional—remove if you pull the image)
     build:
-      context: ./
-      dockerfile: ./Dockerfile
+      context: ../turtlebot_navigation
+      dockerfile: ../turtlebot_navigation/Dockerfile
       args:
-        ROS_DISTRO: jazzy
+        ROS_DISTRO: kilted
 
     network_mode: host
     privileged: true  # needed for Gazebo GUI / hardware access
@@ -56,7 +77,7 @@ services:
     environment:
       <<: *common-env
       DISPLAY: ${DISPLAY}
-      ROS_DISTRO: jazzy
+      ROS_DISTRO: kilted
     devices:
       - /dev/dri/renderD128:/dev/dri/renderD128
       - /dev/dri/card0:/dev/dri/card0
@@ -64,14 +85,14 @@ services:
     volumes:
       # X11 socket for GUI (read-only is usually fine)
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
-      #- ./rplidar.urdf.xacro:/opt/ros/jazzy/share/turtlebot4_description/urdf/sensors/rplidar.urdf.xacro
+      #- ./rplidar.urdf.xacro:/opt/ros/kilted/share/turtlebot4_description/urdf/sensors/rplidar.urdf.xacro
 
     # If your Docker/Compose supports it, uncomment to grant GPU access:
     # gpus: all
 
-    command: bin/bash -c 'ros2 launch turtlebot4_navigation localization.launch.py map:=/opt/ros/jazzy/share/turtlebot4_navigation/maps/maze.yaml use_sim_time:=true'
+    command: /bin/bash -c 'ros2 launch turtlebot4_navigation localization.launch.py map:=/opt/roscon/share/turtlebot4_navigation/maps/maze.yaml use_sim_time:=true'
   turtlebot-gazebo:
-    image: turtlebot4:jazzy
+    image: turtlebot4_simulation:jazzy
     container_name: ros2-turtlebot4-gazebo-jazzy
     tty: True
     # Build locally and tag with the image name above (optional—remove if you pull the image)
@@ -92,7 +113,7 @@ services:
       QT_QPA_PLATFORM: xcb
 
       # Gazebo rendering (GPU lidar needs this)
-      GZ_RENDER_ENGINE: ogre2
+      GZ_RENDER_ENGINE: ogre
       GZ_GUI_CONFIG: ""
       vblank_mode: "0"
       # AMD Mesa driver (important on your P14s Cezanne)
@@ -109,12 +130,12 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
       - /dev/shm:/dev/shm
       - ./maze.sdf:/opt/ros/jazzy/share/turtlebot4_gz_bringup/worlds/maze.sdf
-      #- ./rplidar.urdf.xacro:/opt/ros/jazzy/share/turtlebot4_description/urdf/sensors/rplidar.urdf.xacro
+      - ./rplidar.urdf.xacro:/opt/ros/jazzy/share/turtlebot4_description/urdf/sensors/rplidar.urdf.xacro
 
     # If your Docker/Compose supports it, uncomment to grant GPU access:
     # gpus: all
 
-    command: bin/bash -c 'ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py localization:=false map:=/opt/ros/jazzy/share/turtlebot4_navigation/maps/maze.yaml nav2:=false rviz:=true world:=maze visualize_rays:=false use_sim_time:=true gz_args:="-s -r"'
+    command: /bin/bash -c 'ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py localization:=false map:=/opt/ros/jazzy/share/turtlebot4_navigation/maps/maze.yaml nav2:=false rviz:=false world:=maze visualize_rays:=false use_sim_time:=true gz_args:="-s -r"'
   foxglove-bridge:
     image: foxglove-bridge
     environment:
