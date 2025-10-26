@@ -39,10 +39,9 @@ services:
       ROS_DISTRO: kilted
     volumes:
       - ../envs:/envs:ro
+      - ../configs/nav2.yaml:/opt/roscon/share/turtlebot4_navigation/config/nav2.yaml
     command: >
-      bash -lc
-      "ros2 launch turtlebot4_navigation nav2.launch.py
-       map:=/envs/philipp_home/map.yaml"
+      bash -c "ros2 launch turtlebot4_navigation nav2.launch.py"
 
   turtlebot-localization:
     image: turtlebot4_navigation:kilted
@@ -61,6 +60,4 @@ services:
     volumes:
       - ../envs:/envs:ro
     command: >
-      bash -lc
-      "ros2 launch turtlebot4_navigation localization.launch.py
-       map:=/envs/philipp_home/map.yaml"
+      bash -c "ros2 launch turtlebot4_navigation localization.launch.py map:=/envs/philipp_home/map.yaml"
