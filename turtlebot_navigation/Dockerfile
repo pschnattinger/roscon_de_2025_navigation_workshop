@@ -2,7 +2,7 @@
 
 # Default to ROS Jazzy so `docker build` works without args
 ARG ROS_DISTRO=kilted
-FROM ghcr.io/ros-navigation/nav2_docker:$ROS_DISTRO-1.4.2
+FROM ros:$ROS_DISTRO-ros-core
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -30,7 +30,8 @@ COPY roscon.repos /ws/src/roscon/roscon.repos
 
 RUN vcs import src < /ws/src/roscon/roscon.repos
 
-RUN  /bin/bash -c "source /root/nav2_ws/install/setup.bash && \
+RUN  /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash && \
+  rosdep init && \
   rosdep update && \
   rosdep install --from-paths . -ry && \
   colcon build --merge-install --install-base /opt/roscon --cmake-args -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF $ADDITIONAL_CMAKE_CONFIG --packages-up-to turtlebot4_navigation"
