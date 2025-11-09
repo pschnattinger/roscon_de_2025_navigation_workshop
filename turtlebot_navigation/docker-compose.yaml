@@ -1,26 +1,8 @@
 version: "3.8"
 
 x-common-env: &common-env
-  CYCLONEDDS_URI: |-
-    <?xml version="1.0" encoding="utf-8"?>
-    <CycloneDDS
-        xmlns="https://cdds.io/config"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="https://cdds.io/config https://raw.githubusercontent.com/eclipse-cyclonedds/cyclonedds/master/etc/cyclonedds.xsd">
-      <Domain>
-        <General>
-          <Interfaces>
-            <!-- Adjust interface name to match your host (e.g. wlan0, eth0, enp3s0).
-                 Consider removing this element entirely to let CycloneDDS auto-select. -->
-            <NetworkInterface name="wlan0" priority="default" multicast="default"/>
-            <!-- <NetworkInterface name="usb0" priority="default" multicast="default"/> -->
-          </Interfaces>
-          <DontRoute>true</DontRoute>
-        </General>
-      </Domain>
-    </CycloneDDS>
-  RMW_IMPLEMENTATION: rmw_cyclonedds_cpp
-  ROS_DOMAIN_ID: "2"
+  RMW_IMPLEMENTATION: rmw_fastrtps_cpp
+  ROS_DOMAIN_ID: ${ROS_DOMAIN_ID}
 
 services:
   turtlebot-navigation:
@@ -60,4 +42,4 @@ services:
     volumes:
       - ../envs:/envs:ro
     command: >
-      bash -c "ros2 launch turtlebot4_navigation localization.launch.py map:=/envs/philipp_home/map.yaml"
+      bash -c "ros2 launch turtlebot4_navigation localization.launch.py map:=/envs/${MAP_PATH}"
