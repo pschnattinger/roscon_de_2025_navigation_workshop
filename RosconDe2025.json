@@ -1,0 +1,52 @@
+{
+  "configById": {
+    "3D!49ynhnk": {
+      "cameraState": {
+        "perspective": true,
+        "distance": 19.99999999999987,
+        "phi": 59.99999999999993,
+        "thetaOffset": 44.99999999999998,
+        "targetOffset": [
+          0.0943433501302476,
+          -0.09434335013024756,
+          6.733081025748415e-18
+        ],
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "targetOrientation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "fovy": 45,
+        "near": 0.5,
+        "far": 5000
+      },
+      "followMode": "follow-pose",
+      "scene": {},
+      "transforms": {},
+      "topics": {},
+      "layers": {},
+      "publish": {
+        "type": "point",
+        "poseTopic": "/move_base_simple/goal",
+        "pointTopic": "/clicked_point",
+        "poseEstimateTopic": "/initialpose",
+        "poseEstimateXDeviation": 0.5,
+        "poseEstimateYDeviation": 0.5,
+        "poseEstimateThetaDeviation": 0.26179939
+      },
+      "imageMode": {}
+    }
+  },
+  "globalVariables": {},
+  "userNodes": {},
+  "playbackConfig": {
+    "speed": 1
+  },
+  "layout": "3D!49ynhnk"
+}
