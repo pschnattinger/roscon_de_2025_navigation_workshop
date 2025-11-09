@@ -12,10 +12,21 @@ The TurtleBot4 documentation can be found here: `TurtleBot4 Documentation <https
 
 For this workshop the TurtleBot4 is used in a standard configuration.
 
-ROS Distro and Middleware
-#########################
+Connection to the Robot
+=======================
 
-On the Robot we are using ROS2 Jazzy with CycloneDDS as middleware.
+To conencto the TurtleBot4 robot, you can use SSH to access the robot's Raspberry PI.
+
+.. code-block:: bash
+
+    ssh ubuntu@<robot_ip_address>
+
+The default password for the ``ubuntu`` user is ``turtlebot4``.
+
+ROS Distro and Middleware
+=========================
+
+On the Robot we are using ROS2 Jazzy with FastRTPS as middleware.
 
 Each Robot is using its own ROS2 Domain ID to avoid interference between the robots.
 Please refer to the number on the TurtleBot4 to determine the correct Domain ID to use.
@@ -26,7 +37,7 @@ Please refer to the number on the TurtleBot4 to determine the correct Domain ID 
 	 * - ROS Distro
 	   - Middleware
 	 * - Jazzy
-	   - CycloneDDS (rmw_cyclonedds_cpp)
+	   - FastRTPS (rmw_fastrtps_cpp)
 
 To try to connect to the robots from your PC please make sure to set the same Domain ID in your ROS2 environment.
 
@@ -34,25 +45,7 @@ To try to connect to the robots from your PC please make sure to set the same Do
 
     export ROS_DOMAIN_ID=<domain_id>
 
-    export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+    export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
 
-    export CYCLONEDDS_URI=/path/to/your/cyclonedds.xml
-
-As cyclonedds.xml you can use the following template and adjust the settings as needed:
-
-.. code-block:: xml
-   :linenos:
-
-   <CycloneDDS xmlns="https://cdds.io/config">
-     <Domain>
-       <General>
-         <Interfaces>
-           <!-- Adjust to your network interface -->
-           <NetworkInterface name="wlp3s0" priority="default" multicast="default"/>
-         </Interfaces>
-         <DontRoute>true</DontRoute>
-       </General>
-     </Domain>
-   </CycloneDDS>
 Simulation
 ==========

@@ -19,3 +19,6 @@ This documentation contains the following sections:
    introduction/introduction
    turtlebot4/turtlebot4
    lichtblick/lichtblick
+   mapping/mapping
+   navigation/navigation
+   roadmap/roadmap
