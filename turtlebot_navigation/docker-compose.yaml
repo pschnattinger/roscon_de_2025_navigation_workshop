@@ -15,6 +15,7 @@ services:
       args:
         ROS_DISTRO: kilted
     network_mode: host
+    ipc: host
     environment:
       <<: *common-env
       DISPLAY: ${DISPLAY}
@@ -24,6 +25,8 @@ services:
       - ../configs/nav2.yaml:/opt/roscon/share/turtlebot4_navigation/config/nav2.yaml
     command: >
       bash -c "ros2 launch turtlebot4_navigation nav2.launch.py"
+    depends_on:
+      - turtlebot-localization
 
   turtlebot-localization:
     image: turtlebot4_navigation:kilted
@@ -35,6 +38,7 @@ services:
       args:
         ROS_DISTRO: kilted
     network_mode: host
+    ipc: host
     environment:
       <<: *common-env
       DISPLAY: ${DISPLAY}
