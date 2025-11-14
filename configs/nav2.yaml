@@ -1,3 +1,13 @@
+lifecycle_manager:
+  ros__parameters:
+    autostart: true
+    node_names: ['controller_server', 'planner_server', 'behavior_server', 'bt_navigator']
+    bond_timeout: 10.0
+    state_timeout: 10.0
+    attempt_respawn_reconnection: true
+    bond_respawn_max_duration: 10.0
+    introspection_mode: "disabled"
+
 bt_navigator:
   ros__parameters:
     enable_stamped_cmd_vel: true
@@ -5,9 +15,9 @@ bt_navigator:
     robot_base_frame: base_link
     odom_topic: odom
     bt_loop_duration: 10
-    default_server_timeout: 20
-    wait_for_service_timeout: 1000
-    action_server_result_timeout: 900.0
+    default_server_timeout: 200
+    wait_for_service_timeout: 10000
+    action_server_result_timeout: 9000.0
     navigators: ["navigate_to_pose", "navigate_through_poses"]
     navigate_to_pose:
       plugin: "nav2_bt_navigator::NavigateToPoseNavigator"
@@ -36,15 +46,15 @@ controller_server:
     general_goal_checker:
       stateful: true
       plugin: "nav2_controller::SimpleGoalChecker"
-      xy_goal_tolerance: 0.25
-      yaw_goal_tolerance: 0.25
+      xy_goal_tolerance: 0.05
+      yaw_goal_tolerance: 0.05
     FollowPath:
       plugin: "nav2_mppi_controller::MPPIController"
       time_steps: 56
       model_dt: 0.05
       batch_size: 2000
-      ax_max: 3.0
-      ax_min: -3.0
+      ax_max: 4.0
+      ax_min: -4.0
       ay_max: 3.0
       az_max: 3.5
       vx_std: 0.2
@@ -177,8 +187,8 @@ global_costmap:
   global_costmap:
     ros__parameters:
       enable_stamped_cmd_vel: true
-      update_frequency: 1.0
-      publish_frequency: 1.0
+      update_frequency: 10.0
+      publish_frequency: 10.0
       global_frame: map
       robot_base_frame: base_link
       footprint: "[[ 0.189,  0.000],
@@ -263,18 +273,6 @@ behavior_server:
     max_rotational_vel: 1.0
     min_rotational_vel: 0.4
     rotational_acc_lim: 3.2
-
-waypoint_follower:
-  ros__parameters:
-    enable_stamped_cmd_vel: true
-    loop_rate: 20
-    stop_on_failure: false
-    action_server_result_timeout: 900.0
-    waypoint_task_executor_plugin: "wait_at_waypoint"
-    wait_at_waypoint:
-      plugin: "nav2_waypoint_follower::WaitAtWaypoint"
-      enabled: true
-      waypoint_pause_duration: 200
 
 velocity_smoother:
   ros__parameters:

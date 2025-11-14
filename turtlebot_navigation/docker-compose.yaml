@@ -3,6 +3,8 @@ version: "3.8"
 x-common-env: &common-env
   RMW_IMPLEMENTATION: rmw_fastrtps_cpp
   ROS_DOMAIN_ID: ${ROS_DOMAIN_ID}
+  FASTDDS_DEFAULT_PROFILES_FILE: /etc/fastdds/fastdds_profile.xml
+  ROS_DISCOVERY_SERVER: "127.0.0.1:11811"
 
 services:
   turtlebot-navigation:
@@ -23,11 +25,11 @@ services:
     volumes:
       - ../envs:/envs:ro
       - ../configs/nav2.yaml:/opt/roscon/share/turtlebot4_navigation/config/nav2.yaml
+      - ./fastdds_profile.xml:/etc/fastdds/fastdds_profile.xml:ro
     command: >
-      bash -c "ros2 launch turtlebot4_navigation nav2.launch.py"
+      bash -c "cat /opt/roscon/share/turtlebot4_navigation/config/nav2.yaml && ros2 launch turtlebot4_navigation nav2.launch.py params_file:=/opt/roscon/share/turtlebot4_navigation/config/nav2.yaml"
     depends_on:
       - turtlebot-localization
-
   turtlebot-localization:
     image: turtlebot4_navigation:kilted
     container_name: ros2-turtlebot4-localization-kilted
@@ -44,6 +46,8 @@ services:
       DISPLAY: ${DISPLAY}
       ROS_DISTRO: kilted
     volumes:
+      - ../configs/localization.yaml:/opt/roscon/share/turtlebot4_navigation/config/localization.yaml
       - ../envs:/envs:ro
+      - ./fastdds_profile.xml:/etc/fastdds/fastdds_profile.xml:ro
     command: >
-      bash -c "ros2 launch turtlebot4_navigation localization.launch.py map:=/envs/${MAP_PATH}"
+      bash -c "ros2 launch turtlebot4_navigation localization.launch.py params_file:=/opt/roscon/share/turtlebot4_navigation/config/localization.yaml map:=/envs/${MAP_PATH}"
