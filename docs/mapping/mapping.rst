@@ -45,3 +45,11 @@ To save the map one can use the map_saver node from map_server package.
     ros2 run nav2_map_server map_saver_cli -f "map_name" --ros-args -p map_subscribe_transient_local:=true
 
 This will save two files `map_name.yaml` and `map_name.pgm` in the current directory.
+
+Afer generating the map on the robot one needs to move the files into the envs folder within the roscon folder under
+
+.. code-block:: bash
+
+    /home/ubuntu/roscon_de_2025_navigation_workshop/envs/
+
+This map will be used to navigate the robot in the next section.

@@ -47,5 +47,4 @@ To try to connect to the robots from your PC please make sure to set the same Do
 
     export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
 
-Simulation
-==========
+	export ROS_DISCOVERY_SERVER=<robot_ip_address>:11811
