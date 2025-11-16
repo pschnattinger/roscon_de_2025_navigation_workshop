@@ -8,6 +8,9 @@ This documentation contains the following sections:
 * :doc:`Introduction to the Workshop </introduction/introduction>`
 * :doc:`TurtleBot4 Setup </turtlebot4/turtlebot4>`
 * :doc:`Lichtblick Robot Setup </lichtblick/lichtblick>`
+* :doc:`Mapping with TurtleBot4 </mapping/mapping>`
+* :doc:`Navigation with TurtleBot4 </navigation/navigation>`
+* :doc:`Route Server and Roadmap Tool </route_server/route_server>`
 
 **Focus:** Nav2 (Jazzy), TurtleBot4, practical labs with small group guidance (≈10 participants), plus **Lichtblick** showcase and the **roadmap tool & road server**.
 
