@@ -9,7 +9,7 @@ x-common-env: &common-env
 services:
 
   turtlebot-rviz:
-    image: turtlebot4_navigation:kilted
+    image: registry.gitlab.node-robotics.com/code/sandbox/roscon_preparation/turtlebot4_navigation-test:docker-test-kilted-amd64-4
     container_name: ros2-turtlebot4-rviz-kilted
     tty: True
     network_mode: host
@@ -27,10 +27,10 @@ services:
       # X11 socket for GUI (read-only is usually fine)
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
 
-    #command: /bin/bash -c 'ros2 run rviz2 rviz2 -d $(ros2 pkg prefix nav2_bringup)/share/nav2_bringup/rviz/nav2_default_view.rviz'
-    command: /bin/bash -c 'ros2 launch nav2_rviz_plugins route_tool.launch.py yaml_filename:=/opt/roscon/share/turtlebot4_navigation/maps/maze.yaml'
+    command: /bin/bash -c 'ros2 run rviz2 rviz2 -d $(ros2 pkg prefix nav2_bringup)/share/nav2_bringup/rviz/nav2_default_view.rviz'
+    #command: /bin/bash -c 'ros2 launch nav2_rviz_plugins route_tool.launch.py yaml_filename:=/opt/roscon/share/turtlebot4_navigation/maps/maze.yaml'
   turtlebot-navigation:
-    image: turtlebot4_navigation:kilted
+    image: registry.gitlab.node-robotics.com/code/sandbox/roscon_preparation/turtlebot4_navigation-test:docker-test-kilted-amd64-4
     container_name: ros2-turtlebot4-navigation-kilted
     tty: True
     # Build locally and tag with the image name above (optional—remove if you pull the image)
@@ -61,7 +61,7 @@ services:
 
     command: /bin/bash -c 'ros2 launch turtlebot4_navigation nav2.launch.py map:=/opt/roscon/share/turtlebot4_navigation/maps/maze.yaml use_sim_time:=true'
   turtlebot-localization:
-    image: turtlebot4_navigation:kilted
+    image: registry.gitlab.node-robotics.com/code/sandbox/roscon_preparation/turtlebot4_navigation-test:docker-test-kilted-amd64-4
     container_name: ros2-turtlebot4-localization-kilted
     tty: True
     # Build locally and tag with the image name above (optional—remove if you pull the image)
