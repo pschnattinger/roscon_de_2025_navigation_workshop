@@ -1,0 +1,31 @@
+version: "3.8"
+
+x-common-env: &common-env
+  CYCLONEDDS_URI: >-
+    <CycloneDDS><Domain><Discovery><MaxAutoParticipantIndex>1000</MaxAutoParticipantIndex></Discovery><General><Interfaces><NetworkInterface name="lo" multicast="true"/></Interfaces></General></Domain></CycloneDDS>
+  RMW_IMPLEMENTATION: rmw_cyclonedds_cpp
+  ROS_DOMAIN_ID: "0"
+
+services:
+
+  turtlebot-rviz:
+    image: cinoderobotics/turtlebot4_navigation:kilted-amd64-v1.1.0
+    container_name: ros2-turtlebot4-rviz-kilted
+    tty: True
+    network_mode: host
+    environment:
+      <<: *common-env
+      DISPLAY: ${DISPLAY}
+      ROS_DISTRO: kilted
+      QT_X11_NO_MITSHM: "0"
+      QT_QPA_PLATFORM: xcb
+      MESA_LOADER_DRIVER_OVERRIDE: radeonsi
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
+    ipc: host
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+      - ./graphs/depot_graph.geojson:/opt/ros/kilted/share/nav2_bringup/graphs/depot_graph.geojson:rw
+      - ./graphs/warehouse_graph.geojson:/opt/ros/kilted/share/nav2_bringup/graphs/warehouse_graph.geojson:rw
+
+    command: /bin/bash -c 'ros2 launch nav2_rviz_plugins route_tool.launch.py yaml_filename:=/opt/ros/kilted/share/nav2_bringup/maps/warehouse.yaml'

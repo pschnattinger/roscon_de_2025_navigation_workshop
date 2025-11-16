@@ -54,7 +54,7 @@ Make sure you have the goal topic selected in the publish section.
 
 It needs to be set to /goal_pose
 
-.. image:: ../assets/lichtblick/send_goal.gif
+.. image:: ../assets/lichtblick/send_goal.gif.gif
          :alt: Lichtblick Send Goal
          :align: center
 

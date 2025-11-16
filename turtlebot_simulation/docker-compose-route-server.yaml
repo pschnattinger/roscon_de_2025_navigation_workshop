@@ -55,5 +55,7 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
       - /dev/shm:/dev/shm
       - ./scripts/route_example_launch.py:/opt/ros/kilted/share/nav2_simple_commander/route_example_launch.py:ro
+      - ./graphs/depot_graph.geojson:/opt/ros/kilted/share/nav2_bringup/graphs/depot_graph.geojson:rw
+      - ./graphs/warehouse_graph.geojson:/opt/ros/kilted/share/nav2_bringup/graphs/warehouse_graph.geojson:rw
 
     command: /bin/bash -c 'ros2 launch nav2_simple_commander route_example_launch.py'

@@ -44,8 +44,8 @@ ROUTE_POSES_DICT = {
         "warehouse": {"x": 2.00, "y": -19.65, "yaw": 0.00},  # 0th node
     },
     "goal": {
-        "depot": {"x": 20.12, "y": 11.83, "yaw": 0.00},  # 13th node
-        "warehouse": {"x": -13.0, "y": 2.0, "yaw": 0.00},  # 61st node
+        "depot": {"x": 20.12, "y": 11.83, "yaw": 0.00},
+        "warehouse": {"x": -13.0, "y": 13.0, "yaw": 0.00},
     },
 }
 MAP_TYPE = "warehouse"  # Change this to 'warehouse' for warehouse map

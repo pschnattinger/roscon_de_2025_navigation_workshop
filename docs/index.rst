@@ -21,4 +21,4 @@ This documentation contains the following sections:
    lichtblick/lichtblick
    mapping/mapping
    navigation/navigation
-   roadmap/roadmap
+   route_server/route_server
