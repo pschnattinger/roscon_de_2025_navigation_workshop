@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dds>
+  <participant profile_name="default_participant_profile" is_default_profile="true">
+    <rtps>
+      <useBuiltinTransports>true</useBuiltinTransports>
+      <builtin>
+        <discovery_config>
+          <leaseDuration>
+            <sec>5</sec>
+            <nanosec>0</nanosec>
+          </leaseDuration>
+        </discovery_config>
+      </builtin>
+    </rtps>
+  </participant>
+
+  <publisher profile_name="default_publisher_profile" is_default_profile="true">
+    <qos>
+      <reliability>
+        <kind>RELIABLE</kind>
+        <max_blocking_time>
+          <sec>1</sec>
+          <nanosec>0</nanosec>
+        </max_blocking_time>
+      </reliability>
+    </qos>
+  </publisher>
+
+  <subscriber profile_name="default_subscriber_profile" is_default_profile="true">
+    <qos>
+      <reliability>
+        <kind>RELIABLE</kind>
+      </reliability>
+    </qos>
+  </subscriber>
+</dds>
