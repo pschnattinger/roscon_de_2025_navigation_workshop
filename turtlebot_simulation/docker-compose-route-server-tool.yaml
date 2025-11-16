@@ -9,7 +9,7 @@ x-common-env: &common-env
 services:
 
   turtlebot-rviz:
-    image: cinoderobotics/turtlebot4_navigation:kilted-amd64-v1.1.0
+    image: cinoderobotics/turtlebot4_navigation:kilted-amd64-v1.2.0
     container_name: ros2-turtlebot4-rviz-kilted
     tty: True
     network_mode: host

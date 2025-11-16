@@ -7,27 +7,6 @@ x-common-env: &common-env
   ROS_DOMAIN_ID: "0"
 
 services:
-
-  # turtlebot-rviz:
-  #   image: registry.gitlab.node-robotics.com/code/sandbox/roscon_preparation/turtlebot4_navigation-test:docker-test-kilted-amd64-4
-  #   container_name: ros2-turtlebot4-rviz-kilted
-  #   tty: True
-  #   network_mode: host
-  #   environment:
-  #     <<: *common-env
-  #     DISPLAY: ${DISPLAY}
-  #     ROS_DISTRO: kilted
-  #     QT_X11_NO_MITSHM: "0"
-  #     QT_QPA_PLATFORM: xcb
-  #     MESA_LOADER_DRIVER_OVERRIDE: radeonsi
-  #   devices:
-  #     - /dev/dri/renderD128:/dev/dri/renderD128
-  #   ipc: host
-  #   volumes:
-  #     # X11 socket for GUI (read-only is usually fine)
-  #     - /tmp/.X11-unix:/tmp/.X11-unix:ro
-
-    # command: /bin/bash -c 'ros2 launch nav2_rviz_plugins route_tool.launch.py'
   turtlebot-gazebo:
     image: cinoderobotics/turtlebot4_navigation:kilted-amd64-v1.2.0
     container_name: ros2-turtlebot4-gazebo-kilted
