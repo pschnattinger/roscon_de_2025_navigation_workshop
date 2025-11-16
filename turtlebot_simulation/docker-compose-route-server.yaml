@@ -29,7 +29,7 @@ services:
 
     # command: /bin/bash -c 'ros2 launch nav2_rviz_plugins route_tool.launch.py'
   turtlebot-gazebo:
-    image: cinoderobotics/turtlebot4_navigation:kilted-amd64-v1.1.0
+    image: cinoderobotics/turtlebot4_navigation:kilted-amd64-v1.2.0
     container_name: ros2-turtlebot4-gazebo-kilted
     tty: True
     privileged: true  # needed for Gazebo GUI / hardware access
