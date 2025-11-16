@@ -29,6 +29,10 @@ To follow along with this workshop, you will need:
 - Basic knowledge of ROS2 and Nav2
 - Basic knowledge of Docker
 
+As a help you can use the devcontainer provided in the repository under ``devcontainer/`` folder.
+
+Also please make sure to have cloned the workshop repository as well as downloaded the Lichtblick Suite and the docker image for the simulation inside the turtlebot_simulation folder..
+
 General Structure
 =================
 

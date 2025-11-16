@@ -19,8 +19,6 @@ Repository contents (high level)
 - `simulated_turtlebot/`, `turtlebot_navigation/` — Docker setups and simulation assets
 - `docs/`, `introduction/`, `mapping/`, `navigation/`, `turtlebot4/`, `roadmap/` — workshop documentation sources (RST) and built HTML under `docs/_build/html`
 - `envs/` — example maps and environment files
-- `foxglove_web_bridge/` — web bridge Dockerfile and entrypoint
-
 Contributing
 - Contributions and fixes are welcome. Please open an issue or a pull request describing changes and the reason.
 
