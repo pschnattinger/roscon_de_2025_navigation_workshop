@@ -1,4 +1,4 @@
-FROM cinoderobotics/turtlebot4_navigation:kilted-amd64-v1.1.0
+FROM cinoderobotics/turtlebot4_navigation:kilted-amd64-v1.2.0
 
 # Set up the user and group, remove the standard user first.
 ARG USERNAME=virtual
