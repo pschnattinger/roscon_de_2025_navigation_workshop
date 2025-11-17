@@ -11,6 +11,7 @@ This documentation contains the following sections:
 * :doc:`Mapping with TurtleBot4 </mapping/mapping>`
 * :doc:`Navigation with TurtleBot4 </navigation/navigation>`
 * :doc:`Route Server and Roadmap Tool </route_server/route_server>`
+* :doc:`Devcontainer 101 and setup </devcontainer/devcontainer101>`
 
 **Focus:** Nav2 (Jazzy), TurtleBot4, practical labs with small group guidance (≈10 participants), plus **Lichtblick** showcase and the **roadmap tool & road server**.
 
@@ -25,3 +26,4 @@ This documentation contains the following sections:
    mapping/mapping
    navigation/navigation
    route_server/route_server
+   devcontainer/devcontainer101

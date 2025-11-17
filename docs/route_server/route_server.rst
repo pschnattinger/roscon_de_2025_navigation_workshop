@@ -17,7 +17,7 @@ Therefore make sure to have pulled the image from:
 
 .. code-block:: bash
 
-   docker pull cinoderobotics/turtlebot4_navigation:kilted-amd64-v1.1.0
+   docker pull cinoderobotics/turtlebot4_navigation:kilted-amd64-v1.2.0
 
 Also make sure to have cloned the latest state of the workshop repository.
 
@@ -42,10 +42,11 @@ Starting the Route Server Example
 
 To start the simulation navigate into the turtlebot_simulation folder and launch the route example launch file.
 
-..code-block:: bash
+.. code-block:: bash
 
    cd roscon_de_2025_navigation_workshop/turtlebot_simulation/
-   docker compose up -f docker-compose-route-example.yaml -data
+   docker compose -f docker-compose-route-example.yaml up -d
+
 
 This should start the simulation with the turtlebot4 in the warehouse environment.
 

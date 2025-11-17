@@ -23,6 +23,7 @@ To conencto the TurtleBot4 robot, you can use SSH to access the robot's Raspberr
 
 The default password for the ``ubuntu`` user is ``turtlebot4``.
 
+
 ROS Distro and Middleware
 =========================
 
@@ -48,3 +49,12 @@ To try to connect to the robots from your PC please make sure to set the same Do
     export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
 
 	export ROS_DISCOVERY_SERVER=<robot_ip_address>:11811
+
+Start Motor and Scanner
+========================
+
+If the turtlebot is connected to the charging station the motors and rplidar are disabled by default. To enable them run the following command:
+
+.. code-block:: bash
+
+	ros2 service call /start_motor std_srvs/srv/Empty {}
