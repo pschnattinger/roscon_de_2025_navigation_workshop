@@ -54,7 +54,7 @@ Afer generating the map on the robot one needs to move the files into the envs f
 
 This map will be used to navigate the robot in the next section.
 
-Once you have done this you need to set the environment valriable on the .env file located under ``/home/ubuntu/roscon_de_2025_navigation_workshop/.env`` on the robot.
+Once you have done this you need to set the environment variable on the .env file located under ``/home/ubuntu/roscon_de_2025_navigation_workshop/.env`` on the robot.
 
 Change the map path to the localation of the ``.yaml`` in the ``turtlebot4_navigation/envs/`` folder.
 
@@ -62,6 +62,11 @@ Change the map path to the localation of the ``.yaml`` in the ``turtlebot4_navig
 
     ROS_DOMAIN_ID=4
     MAP_PATH=node/node.yaml
+
+
+.. note::
+
+   Make sure to stop the mapping node on the robot by pressing ``CTRL+C`` in the tmux/screen session where the mapping was started.
 
 
 Starting localization
@@ -72,7 +77,7 @@ The turtlebot4 uses AMCL for localization. To make the turtlebot use your newly 
 .. code-block:: bash
 
    cd /home/ubuntu/roscon_de_2025_navigation_workshop/turtlebot4_navigation/
-   docker compose -f docker-compos.yaml up -d turtlebot-localizaztion
+   docker compose -f docker-compose.yaml up -d turtlebot-localization
 
 Verify that the localization is running.
 

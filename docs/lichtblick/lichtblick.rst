@@ -1062,7 +1062,7 @@ Connect to Robot
 
       .. code-block:: bash
 
-         ros2 launch rosbridge_server rosbridge_websocket_launch.xml
+         tmux new -d -s rosbridge 'ros2 launch rosbridge_server rosbridge_websocket_launch.xml'
 
    3. Open the Lichtblick Suite application on your PC.
 

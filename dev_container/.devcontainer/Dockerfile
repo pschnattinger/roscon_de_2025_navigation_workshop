@@ -21,15 +21,9 @@ RUN apt update \
     && apt install -y sudo software-properties-common
 
 # Install additional development tools.
-RUN apt install -y nano tmux git-cola gitk net-tools qtwayland5
-
+RUN apt install -y nano tmux git-cola gitk net-tools qtwayland5 iputils-ping
 # Install additional ROS tools.
-RUN apt install -y ros-kilted-desktop ros-dev-tools ros-kilted-rmw-cyclonedds-cpp ros-kilted-rmw-fastrtps-cpp ros-kilted-plotjuggler-ros
-
-# Needs to be installed as user.
-RUN PIP_BREAK_SYSTEM_PACKAGES=1 pip install --user colcon-mixin pre-commit \
-    && colcon mixin add default https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml \
-    && colcon mixin update
+RUN apt install -y ros-kilted-desktop ros-dev-tools ros-kilted-rmw-cyclonedds-cpp ros-kilted-rmw-fastrtps-cpp
 
 # Switch from root to user.
 USER $USERNAME

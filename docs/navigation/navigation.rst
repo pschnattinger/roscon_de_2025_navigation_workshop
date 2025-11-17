@@ -61,6 +61,16 @@ It needs to be set to /goal_pose
 
 Now you can play around with the robot and send different goals to it using Lichtblick Suite!
 
+Rviz2 on Devcontainer
+=====================
+You can also use Rviz2 to monitor and send goals to the robot. Make sure to run Rviz2 inside the devcontainer with the following command:
+
+.. code-block:: bash
+
+   source /opt/roscon/setup.bash
+
+   ros2 run rviz2 rviz2 -d ~/workspace/turtlebot4.rviz
+
 Switiching controllers and parameters
 =====================================
 
@@ -77,7 +87,7 @@ Replace the controller_server section with the following to run with DWB local p
 .. code-block:: bash
 
     controller_server:
-    ros__parameters:
+      ros__parameters:
         enable_stamped_cmd_vel: true
         controller_frequency: 20.0
         min_x_velocity_threshold: 0.001
