@@ -1,15 +1,39 @@
 {
   "configById": {
-    "3D!49ynhnk": {
+    "3D!18i6zy7": {
+      "layers": {
+        "845139cb-26bc-40b3-8161-8ab60af4baf5": {
+          "visible": false,
+          "frameLocked": true,
+          "label": "Grid",
+          "instanceId": "845139cb-26bc-40b3-8161-8ab60af4baf5",
+          "layerId": "foxglove.Grid",
+          "size": 10,
+          "divisions": 10,
+          "lineWidth": 1,
+          "color": "#248eff",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "order": 1
+        }
+      },
       "cameraState": {
-        "perspective": true,
-        "distance": 19.99999999999987,
-        "phi": 59.99999999999993,
-        "thetaOffset": 44.99999999999998,
+        "perspective": false,
+        "distance": 16.290124999733596,
+        "phi": 153.60698076762236,
+        "thetaOffset": 44.999999999983004,
         "targetOffset": [
-          0.0943433501302476,
-          -0.09434335013024756,
-          6.733081025748415e-18
+          -1.2056978760013366,
+          -2.7431538341442785,
+          9.464330166873533e-7
         ],
         "target": [
           0,
@@ -26,14 +50,936 @@
         "near": 0.5,
         "far": 5000
       },
-      "followMode": "follow-pose",
-      "scene": {},
-      "transforms": {},
-      "topics": {},
-      "layers": {},
+      "followMode": "follow-position",
+      "followTf": "odom",
+      "scene": {
+        "transforms": {
+          "showLabel": false,
+          "axisScale": 5
+        },
+        "syncCamera": false
+      },
+      "transforms": {
+        "frame:map": {
+          "visible": false
+        },
+        "frame:": {
+          "visible": false
+        },
+        "frame:steer_wheel_link": {
+          "visible": false
+        },
+        "frame:drive_wheel_link": {
+          "visible": false
+        },
+        "frame:template_frame": {
+          "visible": false
+        },
+        "frame:station_frame": {
+          "visible": false
+        },
+        "frame:drive_wheel_base": {
+          "visible": false
+        },
+        "frame:drive_wheel_left_link": {
+          "visible": false
+        },
+        "frame:drive_wheel_right_link": {
+          "visible": false
+        },
+        "frame:front_safety_scanner": {
+          "visible": false
+        },
+        "frame:lift": {
+          "visible": false
+        },
+        "frame:rotator": {
+          "visible": false
+        },
+        "frame:rear_safety_scanner": {
+          "visible": false
+        },
+        "frame:odom": {
+          "visible": false
+        },
+        "frame:base_link": {
+          "visible": true
+        },
+        "frame:wemo0110/camera_back": {
+          "visible": false
+        },
+        "frame:wemo0110/camera_back_optical": {
+          "visible": false
+        },
+        "frame:wemo0110/camera_back_gz": {
+          "visible": false
+        },
+        "frame:wemo0110/camera_front": {
+          "visible": false
+        },
+        "frame:wemo0110/camera_front_optical": {
+          "visible": false
+        },
+        "frame:wemo0110/camera_front_gz": {
+          "visible": false
+        },
+        "frame:wemo0110/camera_left": {
+          "visible": false
+        },
+        "frame:wemo0110/camera_left_optical": {
+          "visible": false
+        },
+        "frame:wemo0110/camera_left_gz": {
+          "visible": false
+        },
+        "frame:wemo0110/camera_right": {
+          "visible": false
+        },
+        "frame:wemo0110/camera_right_optical": {
+          "visible": false
+        },
+        "frame:wemo0110/camera_right_gz": {
+          "visible": false
+        },
+        "frame:wemo0110/sick_back": {
+          "visible": false
+        },
+        "frame:wemo0110/sick_front": {
+          "visible": false
+        },
+        "frame:wemo0110/wheel_back_left": {
+          "visible": false
+        },
+        "frame:wemo0110/wheel_back_right": {
+          "visible": false
+        },
+        "frame:wemo0110/wheel_front_left": {
+          "visible": false
+        },
+        "frame:wemo0110/wheel_front_right": {
+          "visible": false
+        },
+        "frame:base_footprint": {
+          "visible": false
+        },
+        "frame:bump_front_center": {
+          "visible": false
+        },
+        "frame:bump_front_left": {
+          "visible": false
+        },
+        "frame:bump_front_right": {
+          "visible": false
+        },
+        "frame:bump_left": {
+          "visible": false
+        },
+        "frame:bump_right": {
+          "visible": false
+        },
+        "frame:bumper": {
+          "visible": false
+        },
+        "frame:button_1": {
+          "visible": false
+        },
+        "frame:button_2": {
+          "visible": false
+        },
+        "frame:button_power": {
+          "visible": false
+        },
+        "frame:cliff_front_left": {
+          "visible": false
+        },
+        "frame:cliff_front_right": {
+          "visible": false
+        },
+        "frame:cliff_side_left": {
+          "visible": false
+        },
+        "frame:cliff_side_right": {
+          "visible": false
+        },
+        "frame:front_caster_link": {
+          "visible": false
+        },
+        "frame:front_left_bottom_weight_block": {
+          "visible": false
+        },
+        "frame:front_left_top_weight_block": {
+          "visible": false
+        },
+        "frame:front_left_tower_standoff": {
+          "visible": false
+        },
+        "frame:shell_link": {
+          "visible": false
+        },
+        "frame:front_right_bottom_weight_block": {
+          "visible": false
+        },
+        "frame:front_right_top_weight_block": {
+          "visible": false
+        },
+        "frame:front_right_tower_standoff": {
+          "visible": false
+        },
+        "frame:imu_link": {
+          "visible": false
+        },
+        "frame:ir_intensity_front_center_left": {
+          "visible": false
+        },
+        "frame:ir_intensity_front_center_right": {
+          "visible": false
+        },
+        "frame:ir_intensity_front_left": {
+          "visible": false
+        },
+        "frame:ir_intensity_front_right": {
+          "visible": false
+        },
+        "frame:ir_intensity_left": {
+          "visible": false
+        },
+        "frame:ir_intensity_right": {
+          "visible": false
+        },
+        "frame:ir_intensity_side_left": {
+          "visible": false
+        },
+        "frame:ir_omni": {
+          "visible": false
+        },
+        "frame:mouse": {
+          "visible": false
+        },
+        "frame:oakd_camera_bracket": {
+          "visible": false
+        },
+        "frame:oakd_imu_frame": {
+          "visible": false
+        },
+        "frame:oakd_link": {
+          "visible": false
+        },
+        "frame:oakd_left_camera_frame": {
+          "visible": false
+        },
+        "frame:oakd_left_camera_optical_frame": {
+          "visible": false
+        },
+        "frame:oakd_rgb_camera_frame": {
+          "visible": false
+        },
+        "frame:oakd_rgb_camera_optical_frame": {
+          "visible": false
+        },
+        "frame:oakd_right_camera_frame": {
+          "visible": false
+        },
+        "frame:oakd_right_camera_optical_frame": {
+          "visible": false
+        },
+        "frame:rear_left_tower_standoff": {
+          "visible": false
+        },
+        "frame:rear_right_tower_standoff": {
+          "visible": false
+        },
+        "frame:rplidar_link": {
+          "visible": false
+        },
+        "frame:tower_sensor_plate": {
+          "visible": false
+        },
+        "frame:left_wheel": {
+          "visible": false
+        },
+        "frame:wheel_drop_left": {
+          "visible": false
+        },
+        "frame:right_wheel": {
+          "visible": false
+        },
+        "frame:wheel_drop_right": {
+          "visible": false
+        },
+        "frame:wemo0110/base_link": {
+          "visible": true
+        },
+        "frame:left_safety_scanner": {
+          "visible": false
+        },
+        "frame:right_safety_scanner": {
+          "visible": false
+        },
+        "frame:top_scanner": {
+          "visible": false
+        },
+        "frame:camera_link": {
+          "visible": false
+        },
+        "frame:front_wheel_base": {
+          "visible": false
+        },
+        "frame:load_wheel_base": {
+          "visible": false
+        },
+        "frame:fork": {
+          "visible": false
+        },
+        "frame:intrinsic_tof": {
+          "visible": false
+        },
+        "frame:mrdvs_tof": {
+          "visible": false
+        },
+        "frame:mrdvs_rgb": {
+          "visible": false
+        },
+        "frame:mrdvs": {
+          "visible": false
+        }
+      },
+      "topics": {
+        "/scan_unified": {
+          "visible": true,
+          "colorField": "intensity",
+          "colorMode": "flat",
+          "colorMap": "turbo",
+          "flatColor": "#2cff00ff",
+          "pointShape": "circle",
+          "pointSize": 10
+        },
+        "/template": {
+          "visible": true,
+          "frameLocked": true
+        },
+        "/ROI": {
+          "visible": true
+        },
+        "/laser_rear": {
+          "visible": false,
+          "colorField": "intensity",
+          "colorMode": "colormap",
+          "colorMap": "turbo",
+          "pointSize": 10
+        },
+        "/laser_front": {
+          "visible": false,
+          "colorField": "intensity",
+          "colorMode": "flat",
+          "colorMap": "turbo",
+          "pointSize": 10,
+          "flatColor": "#ff0000ff"
+        },
+        "/laser_front_filtered": {
+          "visible": false,
+          "pointSize": 8,
+          "flatColor": "#08d43aff",
+          "colorField": "intensity",
+          "colorMode": "colormap",
+          "colorMap": "turbo"
+        },
+        "/local_costmap/costmap": {
+          "visible": false,
+          "colorMode": "costmap",
+          "alpha": 0.40000000000000013
+        },
+        "/local_costmap/obstacle_layer_sick_laser_scans": {
+          "visible": false
+        },
+        "/map": {
+          "visible": true,
+          "colorMode": "custom",
+          "alpha": 0.6000000000000001,
+          "frameLocked": false
+        },
+        "/global_costmap/virtual_obstacle_layer": {
+          "colorMode": "costmap",
+          "visible": false
+        },
+        "/gt_template": {
+          "visible": true
+        },
+        "/docking/EbandLocalPlanner/lc/band": {
+          "visible": false
+        },
+        "/docking/EbandLocalPlanner/diff/band": {
+          "visible": false
+        },
+        "/footprint": {
+          "visible": true
+        },
+        "/move_base/local_plan": {
+          "visible": true,
+          "type": "arrow",
+          "arrowScale": [
+            0.3,
+            0.15,
+            0.15
+          ]
+        },
+        "/move_base/global_plan": {
+          "visible": true
+        },
+        "/docking/EbandLocalPlanner/diff/local_plan": {
+          "visible": false
+        },
+        "/EbandLocalPlanner/diff/band": {
+          "visible": false
+        },
+        "/plan": {
+          "visible": true,
+          "gradient": [
+            "#ff00008a",
+            "#ff00008a"
+          ],
+          "lineWidth": 0.2
+        },
+        "/replanning/plan": {
+          "visible": true,
+          "gradient": [
+            "#00ff05ff",
+            "#04f500ff"
+          ],
+          "type": "axis",
+          "axisScale": 0.2
+        },
+        "/global_costmap/costmap": {
+          "visible": false
+        },
+        "/collision_visualization": {
+          "visible": false
+        },
+        "/robot_description": {
+          "visible": false
+        },
+        "/obstacle_collision_filter/obstacle_zone": {
+          "visible": true
+        },
+        "/EbandLocalPlanner/diff/local_plan": {
+          "visible": false,
+          "type": "arrow",
+          "gradient": [
+            "#00ff1eff",
+            "#00f863ff"
+          ]
+        },
+        "/zone_manager_node/visualization": {
+          "visible": false,
+          "namespaces": {
+            "ERASER_info_text": {
+              "visible": false
+            },
+            "RESTRICTED_info_text": {
+              "visible": false
+            }
+          },
+          "showOutlines": true
+        },
+        "/docking/EbandLocalPlanner/BidirectionalDiffController/band": {
+          "visible": false
+        },
+        "/docking/EbandLocalPlanner/lr/band": {
+          "visible": false
+        },
+        "/docking/EbandLocalPlanner/omni/band": {
+          "visible": false
+        },
+        "/docking/slowdown": {
+          "visible": false
+        },
+        "/EbandLocalPlanner/bidirdiff/band": {
+          "visible": false
+        },
+        "/EbandLocalPlanner/diff/forces": {
+          "visible": false
+        },
+        "/EbandLocalPlanner/lc/band": {
+          "visible": false
+        },
+        "/EbandLocalPlanner/lc/forces": {
+          "visible": false
+        },
+        "/EbandLocalPlanner/omni/band": {
+          "visible": false
+        },
+        "/EbandLocalPlanner/omni/forces": {
+          "visible": false
+        },
+        "/local_plan_checker": {
+          "visible": false
+        },
+        "/lts_ng/debug/gb/coarse/grid": {
+          "visible": false
+        },
+        "/lts_ng/debug/gb/fine/grid": {
+          "visible": false
+        },
+        "/lts_ng/debug/ini_pose_map_match/grid": {
+          "visible": false
+        },
+        "/lts_ng/debug/recovery_map_match/grid": {
+          "visible": false
+        },
+        "/lts_ng/ndt_markers_long_term": {
+          "visible": false
+        },
+        "/lts_ng/ndt_markers_static": {
+          "visible": false
+        },
+        "/lts_ng/particle_markers": {
+          "visible": false
+        },
+        "/lts_ng/pose_graph": {
+          "visible": false
+        },
+        "/lts_ng/pose_graph_prev": {
+          "visible": false
+        },
+        "/lts_ng/pose_graph_verbose": {
+          "visible": false
+        },
+        "/lts_ng/scan_compensation/correlation_grid_markers": {
+          "visible": false
+        },
+        "/lts_ng/scan_compensation/debug/scan_odom_compensated/pose_debug": {
+          "visible": false
+        },
+        "/lts_ng/scan_compensation/debug/scan_odom/grid": {
+          "visible": false
+        },
+        "/neighbour_visualizer/band": {
+          "visible": false
+        },
+        "/offline_node/pose_graph": {
+          "visible": false
+        },
+        "/offline_visualization_node/band": {
+          "visible": false
+        },
+        "/scene": {
+          "visible": false
+        },
+        "/slowdown": {
+          "visible": true
+        },
+        "/laser_rear_filtered": {
+          "visible": false,
+          "colorField": "intensity",
+          "colorMode": "colormap",
+          "colorMap": "turbo"
+        },
+        "/docking/local_costmap/costmap": {
+          "visible": false
+        },
+        "/downsampled_costmap": {
+          "visible": false
+        },
+        "/global_costmap/obstacle_layer_sick_laser_scans": {
+          "visible": false
+        },
+        "/global_costmap/static_layer": {
+          "visible": false
+        },
+        "/local_costmap/static_layer": {
+          "visible": false
+        },
+        "/local_costmap/virtual_obstacle_layer": {
+          "visible": false
+        },
+        "/lts_ng/hmm_long_term": {
+          "visible": false
+        },
+        "/lts_ng/hmm_static": {
+          "visible": false
+        },
+        "/lts_ng/live_graph_map": {
+          "visible": false
+        },
+        "/lts_ng/map": {
+          "visible": true
+        },
+        "/lts_ng/ndt_long_term": {
+          "visible": false
+        },
+        "/lts_ng/ndt_static": {
+          "visible": false
+        },
+        "/lts_ng/no_mapping_filter": {
+          "visible": false
+        },
+        "/lts_ng/scan_compensation/correlation_grid": {
+          "visible": false
+        },
+        "/offline_node/live_graph_map": {
+          "visible": false
+        },
+        "/replanning/global_costmap/costmap": {
+          "visible": false
+        },
+        "/replanning/global_costmap/static_layer": {
+          "visible": false
+        },
+        "/replanning/map": {
+          "visible": false
+        },
+        "/simulation_map": {
+          "visible": false
+        },
+        "/global_costmap/voxel_marked_cloud": {
+          "visible": false
+        },
+        "/local_costmap/voxel_marked_cloud": {
+          "visible": false
+        },
+        "/mobile_base/sensors/bumper_pointcloud": {
+          "visible": false
+        },
+        "/pointcloud_unified/map_frame": {
+          "visible": false,
+          "colorField": "z",
+          "colorMode": "colormap",
+          "colorMap": "turbo"
+        },
+        "/docking/local_costmap/published_footprint": {
+          "visible": false
+        },
+        "/global_costmap/published_footprint": {
+          "visible": false
+        },
+        "/local_costmap/published_footprint": {
+          "visible": false
+        },
+        "/replanning/global_costmap/published_footprint": {
+          "visible": false
+        },
+        "/goal_pose": {
+          "visible": true
+        },
+        "/gt_pose": {
+          "visible": false
+        },
+        "/initialpose": {
+          "visible": false
+        },
+        "/lts_ng/debug/gb/coarse/pose": {
+          "visible": false
+        },
+        "/lts_ng/debug/gb/fine/pose": {
+          "visible": false
+        },
+        "/lts_ng/debug/ini_pose_map_match/pose": {
+          "visible": false
+        },
+        "/lts_ng/debug/recovery_map_match/pose": {
+          "visible": false
+        },
+        "/lts_ng/scan_compensation/debug/scan_odom/pose": {
+          "visible": false
+        },
+        "/move_base_simple/goal": {
+          "visible": false
+        },
+        "/move_base/passed_waypoint": {
+          "visible": false
+        },
+        "/docking/EbandLocalPlanner/lc/local_plan": {
+          "visible": false
+        },
+        "/docking/EbandLocalPlanner/lr/local_plan": {
+          "visible": false
+        },
+        "/docking/EbandLocalPlanner/omni/local_plan": {
+          "visible": false
+        },
+        "/EbandLocalPlanner/lc/local_plan": {
+          "visible": false
+        },
+        "/EbandLocalPlanner/omni/local_plan": {
+          "visible": false
+        },
+        "/move_base/combined_plan": {
+          "visible": false
+        },
+        "/move_base/combined_plan_sparsed": {
+          "visible": false
+        },
+        "/neighbour_visualizer/local_plan": {
+          "visible": false
+        },
+        "/plan_smoothed": {
+          "visible": false
+        },
+        "/lts_ng/particles": {
+          "visible": true
+        },
+        "/robot/localisation/laser_scan": {
+          "visible": true,
+          "colorField": "intensity",
+          "colorMode": "colormap",
+          "colorMap": "turbo",
+          "pointSize": 3
+        },
+        "/scan_top_filtered": {
+          "visible": false,
+          "colorField": "intensity",
+          "colorMode": "colormap",
+          "colorMap": "turbo",
+          "pointSize": 5.28
+        },
+        "/sick_safetyscanners2/scan": {
+          "visible": false,
+          "colorField": "intensity",
+          "colorMode": "colormap",
+          "colorMap": "turbo"
+        },
+        "/scan_front_filtered": {
+          "visible": true,
+          "colorField": "range",
+          "colorMode": "flat",
+          "colorMap": "turbo",
+          "pointSize": 7,
+          "flatColor": "#f60000ff"
+        },
+        "/laser_left": {
+          "visible": false,
+          "colorField": "intensity",
+          "colorMode": "flat",
+          "colorMap": "turbo",
+          "pointSize": 10,
+          "flatColor": "#ff0000ff"
+        },
+        "/laser_right": {
+          "visible": false,
+          "colorField": "intensity",
+          "colorMode": "flat",
+          "colorMap": "turbo",
+          "flatColor": "#6422ecff",
+          "pointSize": 10
+        },
+        "/scan_top": {
+          "visible": false,
+          "colorField": "intensity",
+          "colorMode": "colormap",
+          "colorMap": "turbo"
+        },
+        "/visionary_t_mini/cam_24110014/pointcloud": {
+          "visible": true,
+          "colorField": "x",
+          "colorMode": "colormap",
+          "colorMap": "turbo",
+          "stixelsEnabled": false,
+          "flatColor": "#ff0000ff",
+          "pointShape": "square",
+          "pointSize": 1
+        },
+        "/visionary_t_mini/cam_24110014/depth": {
+          "visible": false,
+          "frameLocked": true,
+          "cameraInfoTopic": "/visionary_t_mini/cam_24110014/camera_info",
+          "distance": 1,
+          "planarProjectionFactor": 0,
+          "color": "#ffffff",
+          "brightness": 50,
+          "contrast": 50
+        },
+        "/visionary_t_mini/cam_24110014/grayscale": {
+          "visible": true,
+          "frameLocked": true,
+          "cameraInfoTopic": "/visionary_t_mini/cam_24110014/camera_info",
+          "distance": 1,
+          "planarProjectionFactor": 0,
+          "color": "#ffffff",
+          "brightness": 50,
+          "contrast": 50
+        },
+        "/visionary_t_mini/cam_24110014/camera_info": {
+          "visible": false
+        },
+        "/move_base/local_costmap/footprint": {
+          "visible": true,
+          "color": "#edff6bff"
+        },
+        "/move_base/EbandLocalPlanner/eband_bubbles": {
+          "visible": true
+        },
+        "/move_base/local_costmap/costmap": {
+          "visible": true,
+          "colorMode": "costmap",
+          "alpha": 0.20000000000000015
+        },
+        "/bmwstr_zone_model/zone_manager_node/visualization": {
+          "visible": true
+        },
+        "/scan": {
+          "visible": true,
+          "colorField": "intensity",
+          "colorMode": "colormap",
+          "colorMap": "turbo",
+          "pointSize": 10
+        },
+        "/scanner/cloud": {
+          "visible": true,
+          "colorField": "intensity",
+          "colorMode": "colormap",
+          "colorMap": "turbo"
+        },
+        "/collision_zone/stop": {
+          "visible": true,
+          "colorField": "z",
+          "colorMode": "colormap",
+          "colorMap": "turbo"
+        },
+        "/amcl_pose": {
+          "visible": false
+        },
+        "/pid_no_move_area": {
+          "visible": false
+        },
+        "/col_bot_area": {
+          "visible": false
+        },
+        "/move_base/EbandLocalPlanner/intermediate_local_plan": {
+          "visible": true
+        },
+        "/EbandFollowTrajLocalPlanner/omni/local_plan": {
+          "visible": false
+        },
+        "/EbandFollowTrajLocalPlanner/diff/local_plan": {
+          "visible": false
+        },
+        "/laser_left_filtered": {
+          "visible": false,
+          "colorField": "intensity",
+          "colorMode": "colormap",
+          "colorMap": "turbo"
+        },
+        "/scan_unified_filtered": {
+          "visible": true,
+          "colorField": "intensity",
+          "colorMode": "colormap",
+          "colorMap": "turbo",
+          "pointSize": 10
+        },
+        "/EbandFollowTrajLocalPlanner/diff/forces": {
+          "visible": false
+        },
+        "/EbandFollowTrajLocalPlanner/diff/band": {
+          "visible": false
+        },
+        "/lx_camera_node/LxCamera_Cloud": {
+          "visible": true,
+          "colorField": "z",
+          "colorMode": "colormap",
+          "colorMap": "turbo"
+        },
+        "/scan_unified_unthrottled": {
+          "visible": true,
+          "colorField": "intensity",
+          "colorMode": "flat",
+          "colorMap": "turbo",
+          "pointSize": 10,
+          "flatColor": "#182ed0ff"
+        },
+        "/wemo0096/scan_unified": {
+          "visible": true,
+          "colorField": "intensity",
+          "colorMode": "colormap",
+          "colorMap": "turbo",
+          "pointSize": 10
+        },
+        "/EbandLocalPlanner/bidir_diff/band": {
+          "visible": true
+        },
+        "/EbandLocalPlanner/bidir_omni/band": {
+          "visible": true
+        },
+        "/oakd/rgb/preview/depth": {
+          "visible": true,
+          "frameLocked": true,
+          "cameraInfoTopic": "/oakd/rgb/preview/camera_info",
+          "distance": 1,
+          "planarProjectionFactor": 0,
+          "color": "#ffffff",
+          "brightness": 50,
+          "contrast": 50
+        },
+        "/docking/AckermannLocalPlanner/local_plan": {
+          "visible": true,
+          "type": "axis"
+        },
+        "/docking/optimal_trajectory": {
+          "visible": true
+        },
+        "/docking/transformed_global_plan": {
+          "visible": true
+        },
+        "/docking/EbandLocalPlanner/bidir_diff/band": {
+          "visible": true
+        },
+        "/template_marker": {
+          "visible": false
+        },
+        "/detection_pose": {
+          "visible": true
+        },
+        "template_marker_scaled": {
+          "visible": true
+        },
+        "/EbandFollowTrajLocalPlanner/bidir_diff/local_plan": {
+          "visible": false
+        },
+        "/docking/EbandLocalPlanner/bidir_lc/band": {
+          "visible": false
+        },
+        "/scan_unified/filtered": {
+          "visible": false
+        },
+        "/EbandFollowTrajLocalPlanner/bidir_diff/band": {
+          "visible": false
+        },
+        "/replanning/planner_server/HybridAStar_AStar/expansion": {
+          "visible": false
+        },
+        "/wemo0110/scan_unified": {
+          "visible": true,
+          "colorField": "intensity",
+          "colorMode": "colormap",
+          "colorMap": "turbo",
+          "pointSize": 10
+        },
+        "/slam_toolbox/scan_visualization": {
+          "visible": false
+        },
+        "/route_graph": {
+          "visible": false
+        },
+        "/initial_pose": {
+          "visible": true
+        },
+        "/EbandFollowTrajLocalPlanner/bidir_omni/band": {
+          "visible": false
+        },
+        "/docking/EbandLocalPlanner/bidir_omni/band": {
+          "visible": true
+        },
+        "/planner_server/HybridAStar_AStar/path": {
+          "visible": false
+        },
+        "/planner_server/HybridAStar/path": {
+          "visible": true
+        },
+        "/slam_toolbox/graph_visualization": {
+          "visible": true
+        }
+      },
       "publish": {
-        "type": "point",
-        "poseTopic": "/move_base_simple/goal",
+        "type": "pose",
+        "poseTopic": "/goal_pose",
         "pointTopic": "/clicked_point",
         "poseEstimateTopic": "/initialpose",
         "poseEstimateXDeviation": 0.5,
@@ -44,9 +990,18 @@
     }
   },
   "globalVariables": {},
-  "userNodes": {},
-  "playbackConfig": {
-    "speed": 1
+  "userNodes": {
+    "33e74a5f-da70-4d3a-bcb1-b24e713e499c": {
+      "sourceCode": "// The ./types module provides helper types for your Input events and messages.\nimport { Input, Message } from \"./types\";\n\n// Use the ROS schema type for visualization_msgs/Marker\ntype MarkerMsg = Message<\"visualization_msgs/Marker\">;\n\n// Our script outputs a Marker message\ntype Output = MarkerMsg;\n\n// Subscribe to the incoming marker topic\nexport const inputs = [\"/template_marker\"];\n\n// Republish the modified marker here (visible only inside Studio)\nexport const output = \"template_marker_scaled\";\n\n// Set scale to a fixed value\nconst SCALE_VALUE = 3.0;\n\n// This function is called with messages from your input topics.\nexport default function script(event: Input<\"/template_marker\">): Output {\n  const msg = event.message as MarkerMsg;\n\n  return {\n    ...msg,\n    // force a uniform scale of 2.0 on all axes\n    scale: {\n      x: SCALE_VALUE,\n      y: SCALE_VALUE,\n      z: SCALE_VALUE,\n    },\n  };\n}\n ",
+      "name": "33e74a5f"
+    },
+    "7ff4ea3c-1ecc-4402-b0e7-4fae03b64fb7": {
+      "sourceCode": "// The ./types module provides helper types for your Input events and messages.\nimport { Input, Message } from \"./types\";\n\n// Use the ROS schema type for visualization_msgs/Marker\ntype MarkerMsg = Message<\"visualization_msgs/Marker\">;\n\n// Our script outputs a Marker message\ntype Output = MarkerMsg;\n\n// Subscribe to the incoming marker topic\nexport const inputs = [\"/template_marker\"];\n\n// Republish the modified marker here (visible only inside Studio)\nexport const output = \"template_marker_scaled\";\n\n// Set scale to a fixed value\nconst SCALE_VALUE = 3.0;\n\n// This function is called with messages from your input topics.\nexport default function script(event: Input<\"/template_marker\">): Output {\n  const msg = event.message as MarkerMsg;\n\n  return {\n    ...msg,\n    // force a uniform scale of 2.0 on all axes\n    scale: {\n      x: SCALE_VALUE,\n      y: SCALE_VALUE,\n      z: SCALE_VALUE,\n    },\n  };\n}\n ",
+      "name": "7ff4ea3c"
+    }
   },
-  "layout": "3D!49ynhnk"
+  "playbackConfig": {
+    "speed": 5
+  },
+  "layout": "3D!18i6zy7"
 }
